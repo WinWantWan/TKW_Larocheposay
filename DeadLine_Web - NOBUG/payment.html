@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đặt hàng</title>
+
+    <link rel="stylesheet" type="text/css" href="bootstrap4/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="styles/main_styles.css">
+    <link rel="stylesheet" type="text/css" href="styles/payment.css">
+    <link rel="stylesheet" type="text/css" href="styles/gio_hang.css">
+    <script src="https://kit.fontawesome.com/2d2645b0e1.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="super_container">
+        <!-- Header -->
+
+        <header class="header trans_500">
+
+            <!-- Top Navigation -->
+
+            <div class="top_nav">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="top_nav_left">
+                                miễn phí vận chuyển tất cả các đơn hàng trên 500.000 VND
+                            </div>
+                        </div>
+                        <div class="col-md-6 text-right">
+                            <div class="top_nav_right">
+                                <ul class="top_nav_menu">
+
+                                    <!-- Currency / Language / Account -->
+
+                                    <li class="currency">
+                                        <a href="#">
+                                            vnd
+                                            <i class="fa fa-angle-down"></i>
+                                        </a>
+                                        <ul class="currency_selection">
+                                            <li><a href="#">usd</a></li>
+                                            <li><a href="#">eur</a></li>
+                                            <li><a href="#">gbp</a></li>
+                                            <li><a href="#">cad</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="language">
+                                        <a href="#">
+                                            Vietnamese
+                                            <i class="fa fa-angle-down"></i>
+                                        </a>
+                                        <ul class="language_selection">
+                                            <li><a href="#">English</a></li>
+                                            <li><a href="#">French</a></li>
+                                            <li><a href="#">Japanese</a></li>
+                                            <li><a href="#">German</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="account">
+                                        <a href="#">
+                                          <span id="accountName">Tài khoản</span>
+                                          <i class="fa fa-angle-down"></i>
+                                        </a>
+                                        <ul class="account_selection">
+                                          <li id="loginLink"><a href="login.html"><i class="fa fa-sign-in" aria-hidden="true"></i><span id="loginText">Đăng nhập</span></a></li>
+                                          <li id="registerLink"><a href="register.html"><i class="fa fa-user-plus" aria-hidden="true"></i>Đăng ký</a></li>
+                                          <li id="logoutButton" style="display: none;"><a href="#"><i class="fa fa-sign-out" aria-hidden="true"></i>Đăng xuất</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Main Navigation -->
+            
+            <div class="main_nav_container">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 text-right">
+                            <div class="logo_container">
+                                <a href="index.html">LA ROCHE-<span>POSAY</span></a>
+                            </div>
+                            <nav class="navbar">
+                                <ul class="navbar_menu">
+                                    <li><a href="index.html">trang chủ</a></li>
+                                    <li><a href="#">khuyến mãi</a></li>
+                                    <li><a href="#">blog</a></li>
+                                    <li><a href="#">liên hệ</a></li>
+                                </ul>
+                                <ul class="navbar_user">
+                                    <li><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i></a></li>
+                                    <li class="checkout">
+                                        <a href="gio_hang.html">
+                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                            <span id="checkout_items" class="checkout_items">0</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="container">
+            <div class="cart-items"></div>
+            <div class="customer-info">
+                <h3>Thông tin khách hàng</h3>
+                <form id="checkout-form">
+                    <div>
+                        <label for="full-name">Họ tên:</label>
+                        <input type="text" id="full-name" required>
+                    </div>
+                    <div>
+                        <label for="address">Địa chỉ:</label>
+                        <input type="text" id="address" required>
+                    </div>
+                    <div>
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div>
+                        <label for="phone">Số điện thoại:</label>
+                        <input type="tel" id="phone" required>
+                    </div>
+                    <div class="payment-method">
+                        <h3>Phương thức thanh toán</h3>
+                        <input type="radio" id="payable-on-arrival" name="payment" value="payable-on-arrival" checked>Thanh toán khi nhận hàng<br>
+                        <input type="radio" id="credit-card" name="payment" value="credit-card">Thẻ tín dụng/Ghi nợ<br>
+                        <input type="radio" id="tranfer" name="payment" value="tranfer">Chuyển khoản ngân hàng<br>
+                        <div id="qr-code-container" style="display: none;">
+                            <h6>Mã QR:</h6>
+                            <img id="qr-code" src="images/QR.jpg" alt="QR Code" width="30%" height="30%" style="margin-left: 260px;">
+                        </div>
+                    </div>
+                    <div class="cart-total">
+                        <strong class="cart-total-title">Tổng Cộng:</strong>
+                        <span class="cart-total-price"></span>
+                    </div>
+                    <button type="submit" class="payment">Thanh toán</button>
+                </form>
+            </div>
+        </div>  
+
+        <!-- Newsletter -->
+
+        <div class="newsletter">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="newsletter_text d-flex flex-column justify-content-center align-items-lg-start align-items-md-center text-left">
+                            <h4>Đăng ký</h4>
+                            <p>Đăng ký nhận bản tin của chúng tôi và được giảm giá 20% cho lần mua hàng đầu tiên của bạn</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <form action="post">
+                            <div class="newsletter_form d-flex flex-md-row flex-column flex-xs-column align-items-center justify-content-lg-end justify-content-center">
+                                <input id="newsletter_email" type="email" placeholder="Email">
+                                <button type="submit" class="newsletter_submit_btn trans_500" value="Submit">đăng ký</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="footer_nav_container d-flex flex-sm-row flex-column align-items-center justify-content-lg-start justify-content-center text-center">
+                            <ul class="footer_nav">
+                                <li><a href="#">Blog</a></li>
+                                <li><a href="#">Hỏi đáp</a></li>
+                                <li><a href="#">Liên hệ chúng tôi</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="footer_social d-flex flex-row align-items-center justify-content-lg-end justify-content-center">
+                            <ul>
+                                <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fa fa-skype" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div> 
+    <script src="plugin/js/jquery-ui.js"></script>
+    <script src="js/payment.js"></script>
+    <script src="js/gio_hang.js"></script>
+</body>
+</html>
